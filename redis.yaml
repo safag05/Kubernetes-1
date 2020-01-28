@@ -3,14 +3,17 @@ kind: Namespace
 metadata:
   name: web
 
-
+---
 apiVersion: v1
 kind: Pod
 metadata:
-  name: namespace
+  name: redis
+  namespace: web
 spec:
   containers:
-  - name: redis2
-    image: redis
+  - image: redis
+    name: redis
     ports:
     - containerPort: 9090
+      name: redis
+      protocol: TCP
